@@ -40,8 +40,8 @@
 		<li><a href="reservation.php" id="current">Reservation</a></li>
 		<li><a href="return.php">Return</a></li>
 
-		<li><a href="http://www.instagram.com/sungjin1027" target="popup" >Location</a></li>
-		<li><a href="http://www.instagram.com/sungjin1027" target="popup" >Contact</a></li>
+		<!-- <li><a href="http://www.instagram.com/sungjin1027" target="popup" >Location</a></li>
+		<li><a href="http://www.instagram.com/sungjin1027" target="popup" >Contact</a></li> -->
 	</ul>
 </div>
 
@@ -76,7 +76,7 @@
 	</form>
 
 	<iframe name='ifrm' width='100%' height='200px' frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe>
-	<img src="http://m.hcinews.com/captcha.asp" id="imgCaptcha" onclick="showImage();">
+	<!-- <img src="http://m.hcinews.com/captcha.asp" id="imgCaptcha" onclick="showImage();"> -->
 <!--
 	<div id="container"> <span id="random"><img src="sj.jpg" style="width:100%; height: 100%; visibility: visible; z-index: 8"></span>
 	<span id="random"><img src="gg1.jpg" style="width:500px; height: 500px; visibility: visible; z-index: 8"></span> </div>
