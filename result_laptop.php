@@ -21,40 +21,10 @@
 		document.frm.submit();
 	}
 </script>
-<style>
-.phptable tr:hover { 
-	background-color: #fadada;
-}
-.phptable{
-	border-collapse: collapse;
-	width: 100%;
-	color: #d96459;
-	font-family: monospace;
-	text-align: left;
-}
-.phptable th{
-	background-color: #d96459;
-	color: white;
-	font-size: 11px;
-}
-.phptable td{
-	font-size: 10px;
-}
-.phptable tr
-{
-	text-decoration:none ;
-}
-.inputtd {
-	pointer-events: none;
-	cursor: default;
-}
-</style>
 </head>
 <body>
 	<?php
 	session_start();
-
-
 	?>
 
 	<?php
@@ -72,6 +42,24 @@
 
 	$_SESSION['sql'] = $sql;
 
+	?>
+
+	<script language='JavaScript'>
+	function onDelete()
+	{
+	if(confirm('Do you want to delete ?')==true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	}
+	</script>
+	<form name="frmMain" action="Delete_laptop.php" method="post" OnSubmit="return onDelete();">
+	
+	<?php
 	$stmt = sqlsrv_query($conn,$sql);
 	echo '<table class="phptable" border=1 >';
 	echo "<tr>
@@ -83,12 +71,13 @@
 	<th>MSOFFICE</th>
 	<th>StudentId</th>
 	<th>returnDate</th>
+	<th>Available</th>
 	</tr>";
 
 	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC) ) {
 		echo "
-		<tr class='clickable-row' data-href='laptopinfo.php?id=$row[0]'>
-		<td class='' ><input type='checkbox' name='chkbox[]' value='<?php echo $row[0];?>'/></td>	
+		<tr class='clickable-row' data-href='info_laptop.php?id=$row[0]'>
+		<td class='' ><input type='checkbox' name='chkDel[]' value=$row[0]></td>	
 		<td>$row[0]</td>
 		<td>$row[1]</td>
 		<td>$row[2]</td>
@@ -96,17 +85,17 @@
 		<td>$row[4]</td>
 		<td>$row[5]</td>
 		<td>$row[6]</td>
+		<td>$row[7]</td>
 		</tr>";
 	}
 	echo "</table>";
 	?>
 
-
 	<h1></h1>
 	<form method='post' name='frm'>
-		<input type="button" value="Download"  onclick="location.href='downloadexcel.php'">
-		<input type="button" value="Insert" onclick="location.href='Insert.php'">
-		<input type="submit" name = "delete" value=delete />
+		<input type="button" value="Download"  onclick="location.href='downloadexcel_laptop.php'">
+		<input type="button" value="Insert" onclick="location.href='Insert_laptop.php'">
+		<input type="submit" name = "btnDelete" value=Delete />
 	</form>
 </body>
 </html>

@@ -2,201 +2,96 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="fallstyle.css">
-	<style type="text/css">
-.menubar{
-border:none;
-border:0px;
-margin:0px;
-padding:0px;
-font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
-font-size:14px;
-font-weight:bold;
-}
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="html2CSV.js" ></script>
+	<script type="text/javascript">
+	// make tr clickable
+	jQuery(document).ready(function($) {
+		$(".clickable-row").click(function() {
+			var link =  $(this).data("href");
+			var w = window.open(link, "popupWindow", "width=600, height=400, scrollbars=yes");
+			var $w = $(w.document.body);
+			$w.html("<textarea></textarea>");
+		});
+	});
 
-.menubar ul{
-background: rgb(109,109,109);
-height:50px;
-list-style:none;
-margin:0;
-padding:0;
-}
-
-.menubar li{
-float:left;
-padding:0px;
-}
-
-.menubar li a{
-background: rgb(109,109,109);
-color:#cccccc;
-display:block;
-font-weight:normal;
-line-height:50px;
-margin:0px;
-padding:0px 25px;
-text-align:center;
-text-decoration:none;
-}
-
-.menubar li a:hover, .menubar ul li:hover a{
-background: rgb(71,71,71);
-color:#FFFFFF;
-text-decoration:none;
-}
-
-.menubar li ul{
-background: rgb(109,109,109);
-display:none;
-height:auto;
-padding:0px;
-margin:0px;
-border:0px;
-position:absolute;
-width:200px;
-z-index:200;
-}
-
-.menubar li:hover ul{
-display:block;
-}
-
-.menubar li li {
-background: rgb(109,109,109);
-display:block;
-float:none;
-margin:0px;
-padding:0px;
-width:200px;
-}
-
-.menubar li:hover li a{
-background:none;
-}
-
-.menubar li ul a{
-display:block;
-height:50px;
-font-size:12px;
-font-style:normal;
-margin:0px;
-padding:0px 10px 0px 15px;
-text-align:left;
-}
-
-.menubar li ul a:hover, .menubar li ul li:hover a{
-background: rgb(71,71,71);
-border:0px;
-color:#ffffff;
-text-decoration:none;
-}
-
-.menubar p{
-clear:left;
-}
-
-.top p, .top p a{
-text-align:center;
-margin:0px;
-height: 15px;
-color:#cccccc;
-text-decoration:none;
-
-}
-.top {
-background: rgb(109,109,109);
-border:none;
-border:0px;
-margin:0px;
-padding:0px;
-height: 50px;
-}
-
-.frame1 {
-	padding-top: 100px;
-	width:100%;
-	margin: 0 auto;
-}
-
-.content {
-	float:left;
-	margin-left:50px;
-	padding-bottom: 50px;
-	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
-font-size:14px;
-font-weight:bold;
-color:#888888;
-
-}
-.content img {
-	float:left;
-	width : 150px;
-	height: 150px;
-}
-
-
-	</style>
-	<title>
-		Abnormal Cuisine
-	</title>
+	function submit_form() {
+		document.frm.target = 'ifrm';
+		document.frm.action = 'downloadexcel_student.php';
+		document.frm.submit();
+	}
+</script>
 </head>
 <body>
-<div class="top">
-	<p></p>
-	<p>
-		<a href="main.php" id="
-		current">
-		 Delicious Abnormal Cuisine</a>
-	</p>
-</div>
-<div class="menubar">
-<ul>
- <li><a href="#" id="current">Menu</a>
-	<ul>
-     <li><a href="menu/hamburger.php">Hamburger</a></li>
-     <li><a href="menu/pizza.php">Pizza</a></li>
-     <li><a href="menu/pasta.php">Pasta</a></li>
-     <li><a href="menu/salad.php">Salad</a></li>
-     <li><a href="menu/dessert.php">Dessert</a></li>
-     <li><a href="menu/drink.php">Drink</a></li>
-    </ul>
- </li>
- <li><a href="about.php">About</a></li>
+	<?php
+	session_start();
+	?>
 
- <li><a href="https://www.google.com/maps/place/Laurus+College+-+Santa+Maria/@34.922499,-120.4342317,17z/data=!3m1!4b1!4m5!3m4!1s0x80ec6ca63af620a3:0x199a7219e7450876!8m2!3d34.922499!4d-120.432043" target="popup" >Location</a></li>
- <li><a href="https://hangouts.google.com/?hl=ko-US&ht=0&hcb=0&lm1=1547163981604&hs=84&hmv=1&ssc=WyIiLDAsbnVsbCxudWxsLG51bGwsW10sbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLDg0LG51bGwsbnVsbCxudWxsLFsxNTQ3MTYzOTgxNjA0XSxudWxsLG51bGwsW1tudWxsLG51bGwsW251bGwsIisxODA1MzU0NzcwMSJdXV0sbnVsbCxudWxsLHRydWUsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsW10sW10sbnVsbCxudWxsLG51bGwsW10sbnVsbCxudWxsLG51bGwsW10sbnVsbCxudWxsLFtdXQ..&action=chat&pn=%2B18053547701" target="popup" >Contact</a></li>
-</ul>
-</div>
+	<?php
+	$name = $_POST["name"];
+	$username = 'FALL1';
+	$password = 'qqqqqq1!';
+	$hostname = '10.1.10.24';
+	$dbName = 'TestDB1';
+	$serverName = "10.1.10.24\\FALL1";
+	$connectionInfo = array( "Database"=>$dbName, "UID" => $username, "PWD" => $password);
+	$conn = sqlsrv_connect( $hostname, $connectionInfo);
+	
+	$sql = "SELECT * FROM student WHERE name LIKE '%".$name."%' ";
 
+	$_SESSION['sql'] = $sql;
+	
+	?>
+	
+	<script language='JavaScript'>
+		function onDelete()
+		{
+			if(confirm('Do you want to delete ?')==true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	</script>
 
+	<form name="frmMain" action="Delete_student.php" method="post" OnSubmit="return onDelete();">
+		<?php
 
-<script>
+		$stmt = sqlsrv_query($conn,$sql);
+		echo '<table class="phptable" border=1 >';
+		echo "<tr>
+		<th>  </th>
+		<th>ID</th>
+		<th>NAME</th>
+		<th>Program</th>
+		<th>Phone Number</th>
+		<th>email</th>
+		</tr>";
 
-  function submit_form() {
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC) ) {
+		echo "
+		<tr class='clickable-row' data-href='info_student.php?id=$row[0]'>
+		<td><input type='checkbox' name='chkDel[]' value=$row[0]></td>
+		<td>$row[0]</td>
+		<td>$row[1]</td>
+		<td>$row[2]</td>
+		<td>$row[3]</td>
+		<td>$row[4]</td>
 
-    document.frm.target = 'ifrm';
+		</tr>";
+	}
+	echo "</table>";
+	?>
 
-    document.frm.action = 'welcome.php';
-
-    document.frm.submit();
-
-  }
-
-</script>
-
-
-
-<form method='post' name='frm' style="text-align: right">
-
-  <input type=text name=name>
-
-  <input type=button value='Search' onclick='submit_form()'>
-
-</form>
-
-<iframe name='ifrm' width='100%' height='200px' frameborder='2px'></iframe>
-
+	<h1></h1>
+	<form method='post' name='frm'>
+		<input type="button" value="Download"  onclick="location.href='downloadexcel_student.php'">
+		<input type="button" value="Insert" onclick="location.href='Insert_student.php'">
+		<input type="submit" name = "btnDelete" value=Delete />
+	</form>
 
 </body>
-
-
 </html>

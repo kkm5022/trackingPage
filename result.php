@@ -126,7 +126,11 @@
 	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC) ) {
 		echo "
 		<tr class='clickable-row' data-href='studentinfo.php?id=$row[0]'>
-		<td><input type='checkbox' name='chkDel[]' value=$row[0]/></td>
+		<td><input type='checkbox' name='chkDel[]' value=$row[0]>
+
+
+
+		</td>
 		<td>$row[0]</td>
 		<td>$row[1]</td>
 		<td>$row[2]</td>
@@ -160,7 +164,7 @@
 	<h1></h1>
 	<form method='post' name='frm'>
 		<input type="button" value="Download"  onclick="location.href='downloadexcel.php'">
-		<input type="button" value="Insert" onclick="location.href='Insert.php'">
+		<input type="button" value="Insert" onclick ="location.href='Insert.php'">
 		<input type="submit" name = "btnDelete" value=Delete />
 	</form>
 

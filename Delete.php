@@ -58,41 +58,17 @@ table tr
 	$conn = sqlsrv_connect( $hostname, $connectionInfo);
 
 	
-// $sql = "SELECT * FROM student";
-// $sql = "SELECT * FROM student WHERE name LIKE 'John' ";
-
-	// $sql = "DELETE FROM student WHERE id=13";
-
-	// $params = array(
-	// 	$_POST["txtId"]
-	// 	);
-
-	// $stmt = sqlsrv_query($conn,$sql,$params);
-
-	// if( $stmt === false ) {
-
-	// //die(print("error"))
-	// die( print_r( "Record Delete fail"));
-
-	// }
-
-	// else
-	// {
-	// echo "Record Delete successfully";
-
-	// }
 	for($i=0;$i<count($_POST["chkDel"]);$i++)
 	{
 		if($_POST["chkDel"][$i] != ""){
 			
-			//$strSQL = "DELETE FROM student WHERE id = $_POST['chkDel'][$i]";
-			echo $_POST['chkDel'][$i];
-			//$stmt = sqlsrv_query($conn,$strSQL);
+			$strSQL = "DELETE FROM student WHERE id = ?";
+			$params = array($_POST["chkDel"][$i]);
+			$stmt = sqlsrv_query($conn,$strSQL,$params);	
 				
 		}
-	}
 
-	
+	}
 
 	?>
 </body>

@@ -3,46 +3,6 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="fallstyle.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="html2CSV.js" ></script>
-	<script type="text/javascript">
-
-	// make tr clickable
-	jQuery(document).ready(function($) {
-		$(".clickable-row").click(function() {
-			var link =  $(this).data("href");
-			var w = window.open(link, "popupWindow", "width=600, height=400, scrollbars=yes");
-			var $w = $(w.document.body);
-			$w.html("<textarea></textarea>");
-		});
-	});
-
-</script>
-<style>
-.phptable tr:hover { 
-	background-color: #fadada;
-}
-.phptable{
-	border-collapse: collapse;
-	width: 100%;
-	color: #d96459;
-	font-family: monospace;
-	text-align: left;
-}
-
-.phptable th{
-	background-color: #d96459;
-	color: white;
-	font-size: 11px;
-}
-.phptable td{
-	font-size: 10px;
-}
-.phptable tr
-{
-	text-decoration:none ;
-}
-
-</style>
 </head>
 <body>
 	<?php
@@ -57,41 +17,42 @@
 	$connectionInfo = array( "Database"=>$dbName, "UID" => $username, "PWD" => $password);
 	$conn = sqlsrv_connect( $hostname, $connectionInfo);
 
-//$sql = "SELECT * FROM student";
-//$sql = "SELECT * FROM student WHERE name LIKE 'John' ";
-
-
 	$sql = "UPDATE laptop SET 
-	 SN = ?,
-	 CPU = ?,
-	 Inches = ?,
-	 MSOFFICE = ?,
-	 StudentId = ?,
-	 returnDate = ? ,
-	 WHERE id = ?";
+	SN = ?,
+	CPU = ?,
+	inches = ?,
+	MSOFFICE = ?,
+	studentId = ?,
+	returnDate = ?,
+	available = ?
+	WHERE id = ?";
 
-	$params = array($_POST["txtSN"]
-		,$_POST["txtCPU"],
+	$params = array(
+		$_POST["txtSN"],
+		$_POST["txtCPU"],
 		$_POST["txtInches"],
 		$_POST["txtMSOFFICE"],
 		$_POST["txtStudentId"],
 		$_POST["txtreturnDate"],
+		$_POST["txtAvailable"],
 		$_POST["txtId"]
-		);
+	);
+
 	$stmt = sqlsrv_query($conn,$sql,$params);
 
 	if( $stmt === false ) {
 
-	die( print_r( sqlsrv_errors(), true));
+		die( print_r( sqlsrv_errors(), true));
 
 	}
 
 	else
 	{
-	echo "Record update successfully";
+		echo "Record update successfully<br/>";
+		
 
 	}
 	?>
-
+<input type="button" name="Closeseseses" value="Close" onclick="javascript:window.close();">
 </body>
 </html>

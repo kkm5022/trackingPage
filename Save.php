@@ -64,6 +64,7 @@
 	$sql = "UPDATE student SET 
 	 name = ?,
 	 pro = ?,
+	 studentNumber = ?,
 	 phoneNumber = ?,
 	 email = ?,
 	 startdate = ?,
@@ -88,6 +89,7 @@
 
 	$params = array($_POST["txtName"]
 		,$_POST["txtPro"],
+		$_POST["txtStudentNumber"],
 		$_POST["txtPhoneNumber"],
 		$_POST["txtEmail"],
 		$_POST["txtStartdate"],

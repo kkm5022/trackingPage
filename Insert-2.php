@@ -61,8 +61,7 @@ table tr
 // $sql = "SELECT * FROM student";
 // $sql = "SELECT * FROM student WHERE name LIKE 'John' ";
 
-	$sql = "INSERT INTO student(id,name,pro,phoneNumber,email,startdate,LSA,tag,Notes,DocuSign,Cpu,AddtoLed,Ordered,Onhand,LenApp,TimApp,PickUpDate,ShipDate,TrackingNumber,Received,Completed,MSOFFICE,ReturnReceived) values(?,?,?,?
-,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	$sql = "INSERT INTO student(id,name,pro,phoneNumber,email,startdate,LSA,tag,Notes,DocuSign,Cpu,AddtoLed,Ordered,Onhand,LenApp,TimApp,PickUpDate,ShipDate,TrackingNumber,Received,Completed,MSOFFICE,ReturnReceived) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	$params = array(
 		$_POST["txtId"],
