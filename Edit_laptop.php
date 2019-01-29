@@ -30,25 +30,42 @@
 		<table  border="1" class="phptable">
 
 			<tr>
-				<th width="50">id</th>
+				<th width="50">ID</th>
 				<td width="50">
 					<input type="text" name="txtId" value="<?php echo $row[0];?>">
 				</td>
 			</tr>
 			<tr>
-				<th width="50">SN</th>
+				<th width="50">Serial Number</th>
 				<td><input type="text" name="txtSN" value="<?php echo $row[1];?>"></td>
 			</tr>
 			<tr>
 				<th width="50">CPU</th>
-				<td><input type="text" name="txtCPU" value="<?php echo $row[2];?>"></td>
+				<td>
+
+					<select name="txtCPU">
+						<option hidden value=<?php echo $row[2];?>><?php echo $row[2];?></option>
+						<option value="i3">i3</option>
+						<option value="i5">i5</option>
+						<option value="i7">i7</option>
+						<option value="i9">i9</option>
+					</select>
+					
+				</td>
 			</tr>
 			<tr>
-				<th width="50">inches</th>
-				<td><input type="text" name="txtInches" value="<?php echo $row[3];?>"></td>
+				<th width="50">Inches</th>
+				<td>
+					<select name="txtInches">
+						<option hidden value=<?php echo $row[3];?>><?php echo $row[3];?></option>
+						<option value="13">13</option>
+						<option value="15">15</option>
+						<option value="17">17</option>
+						<option value="19">19</option>
+					</select></td>
 			</tr>
 			<tr>
-				<th width="50">MSOFFICE</th>
+				<th width="50">MS OFFICE</th>
 				<?php
 				
 				echo (\strpos($row[4], 'Y') !== false) ?
@@ -69,11 +86,11 @@
 				?>
 			</tr>
 			<tr>
-				<th width="50">studentId</th>
+				<th width="50">Student Id</th>
 				<td><input type="text" name="txtStudentId" value="<?php echo $row[5];?>"></td>
 			</tr>
 			<tr>
-				<th width="50">returnDate</th>
+				<th width="50">Return Date</th>
 				<td><input type="text" name="txtreturnDate" value="<?php echo $row[6];?>"></td>
 			</tr>
 			<tr>	
