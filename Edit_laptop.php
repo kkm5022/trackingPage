@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +10,7 @@
 <body>
 
 	<?php
-
-	$id = $_GET["id"];
+	$id=$_SESSION['id'];
 	$username = 'FALL1';
 	$password = 'qqqqqq1!';
 	$hostname = '10.1.10.24';
@@ -90,8 +92,8 @@
 				<td><input type="text" name="txtStudentId" value="<?php echo $row[5];?>"></td>
 			</tr>
 			<tr>
-				<th width="50">Return Date</th>
-				<td><input type="text" name="txtreturnDate" value="<?php echo $row[6];?>"></td>
+				<th width="50">Recevied Date</th>
+				<td><input type="text" name="txtReturnDate" value="<?php echo $row[6];?>"/></td>
 			</tr>
 			<tr>	
 				<th width="50">Available</th>
